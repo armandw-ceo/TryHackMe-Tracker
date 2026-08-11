@@ -15,8 +15,10 @@ def get_completed_rooms_from_notion():
     token = NOTION_TOKEN.strip()
     db_id = DATABASE_ID.strip()
 
-    # 🌐 FIXED URL STRUCTURE: Built explicitly to avoid host scrambling
-    url = f"https://notion.com{db_id}/query"
+    # We split the URL to prevent GitHub Secrets engine from masking the domain host
+   base_endpoint = "https://notion.com"
+   url = base_endpoint + str(db_id).strip() + "/query"
+
     
     headers = {
         "Authorization": f"Bearer {token}",
