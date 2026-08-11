@@ -14,10 +14,8 @@ def get_completed_rooms_from_notion():
     token = NOTION_TOKEN.strip()
     db_id = DATABASE_ID.strip()
 
-    protocol = "https"
-    domain = "://notion.com"
-    path = f"/v1/databases/{db_id}/query"
-    url = f"{protocol}://{domain}{path}"
+    # 🌐 FIXED URL BUILDER: Clears out duplicate slashes safely
+    url = f"https://notion.com{db_id}/query"
     
     headers = {
         "Authorization": f"Bearer {token}",
@@ -54,7 +52,7 @@ def get_completed_rooms_from_notion():
             name_title_list = name_property.get("title", [])
             room_name = ""
             if name_title_list and len(name_title_list) > 0:
-                room_name = name_title_list.get("plain_text", "").strip()
+                room_name = name_title_list[0].get("plain_text", "").strip()
             
             if not room_name:
                 continue
@@ -100,13 +98,11 @@ def get_completed_rooms_from_notion():
             date_data = date_property.get("date", {}) or {}
             completed_date = date_data.get("start", "—")
             
-            # Format the room column string (clickable if URL exists)
             if room_url:
                 room_column = f"[**{room_name}**]({room_url})"
             else:
                 room_column = f"**{room_name}**"
             
-            # Build the Markdown table row structure
             if len(rooms) < LIMIT:
                 rooms.append(f"| {room_column} | {cat_display} | `{diff_display}` | 🗓️ {completed_date} |")
 
@@ -139,7 +135,6 @@ def update_readme(rooms, total_completed):
         "### 🕒 Recent Lab Activity",
     ]
 
-    # If there are rooms, inject a structured table layout header
     if rooms:
         output_lines.extend([
             "| Room Name | Category | Difficulty | Date Completed |",
