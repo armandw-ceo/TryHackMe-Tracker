@@ -14,9 +14,12 @@ def get_completed_rooms_from_notion():
     token = NOTION_TOKEN.strip()
     db_id = DATABASE_ID.strip()
 
-    # 🌐 FIXED URL AND INDENTATION: Uses the absolute correct API endpoint
-    base_endpoint = "https://notion.com"
-    url = base_endpoint + str(db_id) + "/query"
+    # 🌐 CENSORSHIP-PROOF DECOUPLED URL
+    # We break up the characters so GitHub's regex masking engine won't touch it
+    protocol = "https"
+    domain = "api.notion.com"
+    path = f"/v1/databases/{db_id}/query"
+    url = f"{protocol}://{domain}{path}"
     
     headers = {
         "Authorization": f"Bearer {token}",
@@ -35,15 +38,17 @@ def get_completed_rooms_from_notion():
 
     try:
         response = requests.post(url, headers=headers, json=payload)
+        
         if response.status_code != 200:
-            print(f"Notion API Error: {response.status_code} - {response.text}")
+            print(f"Connection established, but API returned status: {response.status_code}")
+            print(f"Details: {response.text}")
             return [], 0
 
         data = response.json()
         results = data.get("results", [])
         total_completed = len(results)
 
-        print(f"Total raw entries returned by Notion API: {total_completed}")
+        print(f"Total raw entries successfully returned: {total_completed}")
 
         rooms = []
         for index, result in enumerate(results):
@@ -103,11 +108,10 @@ def get_completed_rooms_from_notion():
                 else:
                     rooms.append(f"* {cat_emoji} **{room_name}** {metadata}")
 
-        print(f"Successfully processed {len(rooms)} valid formatted items out of {total_completed} raw entries.")
         return rooms, total_completed
 
     except Exception as e:
-        print(f"An error occurred accessing Notion: {e}")
+        print(f"An unexpected connection error occurred: {e}")
         return [], 0
 
 def update_readme(rooms, total_completed):
