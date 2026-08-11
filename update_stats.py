@@ -98,8 +98,8 @@ def get_completed_rooms_from_notion():
                 diff_emoji = "⚙️ Lab"
 
             # 4. Extract URL
-            url_property = properties.get("Url", {}) or {}
-            room_url = url_property.get("url", "")
+            url_property = properties.get("URL", {}) or {}
+            room_url = url_property.get("URL", "")
             
             metadata = f"— *{category_name}* | `{diff_emoji}`"
             if len(rooms) < LIMIT:
