@@ -9,5 +9,7 @@
 | 🏆 Rooms Completed | **1** |
 
 ### 🕒 Recent Lab Activity
-* 🔵 **M365 Monitoring Basics** — *Blue Team* | `🟡 Medium`
+| Room Name | Category | Difficulty | Date Completed |
+| :--- | :--- | :--- | :--- |
+| [**M365 Monitoring Basics**](https://tryhackme.com/room/m365monitoringbasics) | 🔵 Blue Team | `🟡 Medium` | 🗓️ 2026-08-08 |
 <!-- THM-ROOMS:END -->
