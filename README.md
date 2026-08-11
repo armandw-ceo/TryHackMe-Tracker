@@ -6,8 +6,8 @@
 ### ⚡ Quick Stats
 | Metric | Value |
 | :--- | :--- |
-| 🏆 Rooms Completed | **0** |
+| 🏆 Rooms Completed | **1** |
 
 ### 🕒 Recent Lab Activity
-* No recent completed labs found in Notion tracker.
+* 🔵 **M365 Monitoring Basics** — *Blue Team* | `🟡 Medium`
 <!-- THM-ROOMS:END -->
