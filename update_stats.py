@@ -2,7 +2,6 @@ import os
 import re
 import requests
 
-# Fetch authentication keys securely from GitHub Secrets (Safe for public repos)
 NOTION_TOKEN = os.getenv("NOTION_TOKEN")
 DATABASE_ID = os.getenv("NOTION_DATABASE_ID")
 LIMIT = 10
@@ -10,7 +9,7 @@ LIMIT = 10
 def get_completed_rooms_from_notion():
     if not NOTION_TOKEN or not DATABASE_ID:
         print("Error: Missing NOTION_TOKEN or NOTION_DATABASE_ID in environment variables.")
-        return []
+        return [], 0
 
     url = f"https://notion.com{DATABASE_ID}/query"
     headers = {
@@ -26,20 +25,22 @@ def get_completed_rooms_from_notion():
                 "property": "Completed",
                 "direction": "descending"
             }
-        ],
-        "page_size": LIMIT
+        ]
     }
 
     try:
         response = requests.post(url, headers=headers, json=payload)
         if response.status_code != 200:
             print(f"Notion API Error: {response.status_code} - {response.text}")
-            return []
+            return [], 0
 
         data = response.json()
-        rooms = []
+        results = data.get("results", [])
+        total_completed = len(results)  # Dynamically count the number of rows in Notion
 
-        for result in data.get("results", []):
+        rooms = []
+        # Process only up to our limit for the recent list
+        for result in results[:LIMIT]:
             properties = result.get("properties", {})
             
             # 1. Extract Room Name
@@ -94,14 +95,14 @@ def get_completed_rooms_from_notion():
             else:
                 rooms.append(f"* {cat_emoji} **{room_name}** {metadata}")
 
-        print(f"Successfully fetched {len(rooms)} labs from your custom Notion Tracker!")
-        return rooms
+        print(f"Successfully tracked {total_completed} total items from Notion.")
+        return rooms, total_completed
 
     except Exception as e:
         print(f"An error occurred accessing Notion: {e}")
-        return []
+        return [], 0
 
-def update_readme(rooms):
+def update_readme(rooms, total_completed):
     try:
         with open("README.md", "r") as f:
             content = f.read()
@@ -115,10 +116,22 @@ def update_readme(rooms):
         print("Error: Comment markers missing in README.md")
         return
 
+    # Build the dynamic Markdown metrics table and recent activities list
+    output_lines = [
+        "### ⚡ Quick Stats",
+        "| Metric | Value |",
+        "| :--- | :--- |",
+        f"| 🏆 Rooms Completed | **{total_completed}** |",
+        "",
+        "### 🕒 Recent Lab Activity"
+    ]
+
     if rooms:
-        room_list_str = "\n" + "\n".join(rooms) + "\n"
+        output_lines.extend(rooms)
     else:
-        room_list_str = "\n* No recent completed labs found in Notion tracker.\n"
+        output_lines.append("* No recent completed labs found in Notion tracker.")
+
+    room_list_str = "\n" + "\n".join(output_lines) + "\n"
 
     pattern = f"{start_marker}.*?{end_marker}"
     new_content = re.sub(pattern, f"{start_marker}{room_list_str}{end_marker}", content, flags=re.DOTALL)
@@ -127,5 +140,5 @@ def update_readme(rooms):
         f.write(new_content)
 
 if __name__ == "__main__":
-    completed_rooms = get_completed_rooms_from_notion()
-    update_readme(completed_rooms)
+    completed_rooms, total_count = get_completed_rooms_from_notion()
+    update_readme(completed_rooms, total_count)
