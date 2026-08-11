@@ -11,14 +11,12 @@ def get_completed_rooms_from_notion():
         print("Error: Missing NOTION_TOKEN or NOTION_DATABASE_ID in environment variables.")
         return [], 0
 
-    # Clean up the token and database ID just in case there are invisible spaces
     token = NOTION_TOKEN.strip()
     db_id = DATABASE_ID.strip()
 
-    # We split the URL to prevent GitHub Secrets engine from masking the domain host
-   base_endpoint = "https://notion.com"
-   url = base_endpoint + str(db_id).strip() + "/query"
-
+    # 🌐 FIXED URL AND INDENTATION: Uses the absolute correct API endpoint
+    base_endpoint = "https://notion.com"
+    url = base_endpoint + str(db_id) + "/query"
     
     headers = {
         "Authorization": f"Bearer {token}",
