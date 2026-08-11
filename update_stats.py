@@ -15,7 +15,6 @@ def get_completed_rooms_from_notion():
     db_id = DATABASE_ID.strip()
 
     # 🌐 CENSORSHIP-PROOF DECOUPLED URL
-    # We break up the characters so GitHub's regex masking engine won't touch it
     protocol = "https"
     domain = "api.notion.com"
     path = f"/v1/databases/{db_id}/query"
@@ -47,7 +46,6 @@ def get_completed_rooms_from_notion():
         data = response.json()
         results = data.get("results", [])
         total_completed = len(results)
-
         print(f"Total raw entries successfully returned: {total_completed}")
 
         rooms = []
@@ -57,7 +55,6 @@ def get_completed_rooms_from_notion():
             # 1. Extract Room Name
             name_property = properties.get("Name", {}) or {}
             name_title_list = name_property.get("title", [])
-            
             room_name = ""
             if name_title_list and len(name_title_list) > 0:
                 room_name = name_title_list[0].get("plain_text", "").strip()
@@ -71,13 +68,13 @@ def get_completed_rooms_from_notion():
             category_name = select_data.get("name", "General")
             
             if "Red Team" in category_name:
-                cat_emoji = "🔴"
+                cat_display = "🔴 Red Team"
             elif "Blue Team" in category_name:
-                cat_emoji = "🔵"
+                cat_display = "🔵 Blue Team"
             elif "Purple Team" in category_name:
-                cat_emoji = "🟣"
+                cat_display = "🟣 Purple Team"
             else:
-                cat_emoji = "🚀"
+                cat_display = f"🚀 {category_name}"
 
             # 3. Extract Difficulty
             difficulty_select = properties.get("Difficulty", {}) or {}
@@ -97,16 +94,24 @@ def get_completed_rooms_from_notion():
             else:
                 diff_emoji = "⚙️ Lab"
 
-            # 4. Extract URL
-            url_property = properties.get("URL", {}) or {}
-            room_url = url_property.get("URL", "")
+            # 4. Extract URL (FIXED: Uses Notion's lowercase inner 'url' key)
+            url_property = properties.get("Url", {}) or properties.get("URL", {}) or {}
+            room_url = url_property.get("url", "")
+
+            # 5. Extract Completed Date (NEW: Grabs calendar start date string)
+            date_property = properties.get("Completed", {}) or {}
+            date_data = date_property.get("date", {}) or {}
+            completed_date = date_data.get("start", "—")
             
-            metadata = f"— *{category_name}* | `{diff_emoji}`"
+            # Format the room name as a clickable hyperlink if a URL is provided
+            if room_url:
+                room_cell = f"[**{room_name}**]({room_url})"
+            else:
+                room_cell = f"**{room_name}**"
+            
+            # Build structured Markdown Table Rows instead of bulleted lists
             if len(rooms) < LIMIT:
-                if room_url:
-                    rooms.append(f"* {cat_emoji} [**{room_name}**]({room_url}) {metadata}")
-                else:
-                    rooms.append(f"* {cat_emoji} **{room_name}** {metadata}")
+                rooms.append(f"| {room_cell} | {cat_display} | `{diff_emoji}` | 🗓️ {completed_date} |")
 
         return rooms, total_completed
 
@@ -137,7 +142,12 @@ def update_readme(rooms, total_completed):
         "### 🕒 Recent Lab Activity"
     ]
 
+    # Dynamically inject the table layout headers if entries exist
     if rooms:
+        output_lines.extend([
+            "| Room Name | Category | Difficulty | Date Completed |",
+            "| :--- | :--- | :--- | :--- |"
+        ])
         output_lines.extend(rooms)
     else:
         output_lines.append("* No recent completed labs found in Notion tracker.")
