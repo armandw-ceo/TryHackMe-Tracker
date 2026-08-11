@@ -11,14 +11,19 @@ def get_completed_rooms_from_notion():
         print("Error: Missing NOTION_TOKEN or NOTION_DATABASE_ID in environment variables.")
         return [], 0
 
-    url = f"https://notion.com{DATABASE_ID}/query"
+    # Clean up the token and database ID just in case there are invisible spaces
+    token = NOTION_TOKEN.strip()
+    db_id = DATABASE_ID.strip()
+
+    # 🌐 FIXED URL STRUCTURE: Built explicitly to avoid host scrambling
+    url = f"https://notion.com{db_id}/query"
+    
     headers = {
-        "Authorization": f"Bearer {NOTION_TOKEN}",
+        "Authorization": f"Bearer {token}",
         "Notion-Version": "2022-06-28",
         "Content-Type": "application/json"
     }
     
-    # Sorts labs by your custom "Completed" date column (Newest first)
     payload = {
         "sorts": [
             {
@@ -36,28 +41,30 @@ def get_completed_rooms_from_notion():
 
         data = response.json()
         results = data.get("results", [])
-        total_completed = len(results)  # Dynamically count the number of rows in Notion
+        total_completed = len(results)
+
+        print(f"Total raw entries returned by Notion API: {total_completed}")
 
         rooms = []
-        # Process only up to our limit for the recent list
-        for result in results[:LIMIT]:
+        for index, result in enumerate(results):
             properties = result.get("properties", {})
             
             # 1. Extract Room Name
-            name_title_list = properties.get("Name", {}).get("title", [])
-            room_name = ""
-            if name_title_list:
-                room_name = name_title_list[0].get("text", {}).get("content", "").strip()
+            name_property = properties.get("Name", {}) or {}
+            name_title_list = name_property.get("title", [])
             
-            # Skip processing if name field is blank
+            room_name = ""
+            if name_title_list and len(name_title_list) > 0:
+                room_name = name_title_list[0].get("plain_text", "").strip()
+            
             if not room_name:
                 continue
 
-            # 2. Extract Category (Red Team, Blue Team, Purple Team)
-            category_select = properties.get("Category", {}).get("select") or {}
-            category_name = category_select.get("name", "General")
+            # 2. Extract Category
+            category_select = properties.get("Category", {}) or {}
+            select_data = category_select.get("select", {}) or {}
+            category_name = select_data.get("name", "General")
             
-            # Map categories to team emojis
             if "Red Team" in category_name:
                 cat_emoji = "🔴"
             elif "Blue Team" in category_name:
@@ -67,11 +74,11 @@ def get_completed_rooms_from_notion():
             else:
                 cat_emoji = "🚀"
 
-            # 3. Extract Difficulty (Info, Easy, Medium, Hard, Insane)
-            difficulty_select = properties.get("Difficulty", {}).get("select") or {}
-            difficulty_name = difficulty_select.get("name", "").lower().strip()
+            # 3. Extract Difficulty
+            difficulty_select = properties.get("Difficulty", {}) or {}
+            diff_data = difficulty_select.get("select", {}) or {}
+            difficulty_name = diff_data.get("name", "").lower().strip()
             
-            # Map difficulties to color scale emojis
             if "info" in difficulty_name:
                 diff_emoji = "⚪ Info"
             elif "easy" in difficulty_name:
@@ -85,17 +92,18 @@ def get_completed_rooms_from_notion():
             else:
                 diff_emoji = "⚙️ Lab"
 
-            # 4. Extract the direct lab URL
-            room_url = properties.get("Url", {}).get("url", "")
+            # 4. Extract URL
+            url_property = properties.get("Url", {}) or {}
+            room_url = url_property.get("url", "")
             
-            # Build the clean line item
             metadata = f"— *{category_name}* | `{diff_emoji}`"
-            if room_url:
-                rooms.append(f"* {cat_emoji} [**{room_name}**]({room_url}) {metadata}")
-            else:
-                rooms.append(f"* {cat_emoji} **{room_name}** {metadata}")
+            if len(rooms) < LIMIT:
+                if room_url:
+                    rooms.append(f"* {cat_emoji} [**{room_name}**]({room_url}) {metadata}")
+                else:
+                    rooms.append(f"* {cat_emoji} **{room_name}** {metadata}")
 
-        print(f"Successfully tracked {total_completed} total items from Notion.")
+        print(f"Successfully processed {len(rooms)} valid formatted items out of {total_completed} raw entries.")
         return rooms, total_completed
 
     except Exception as e:
@@ -116,7 +124,6 @@ def update_readme(rooms, total_completed):
         print("Error: Comment markers missing in README.md")
         return
 
-    # Build the dynamic Markdown metrics table and recent activities list
     output_lines = [
         "### ⚡ Quick Stats",
         "| Metric | Value |",
