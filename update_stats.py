@@ -6,26 +6,35 @@ LIMIT = 10
 
 def get_completed_rooms():
     url = f"https://tryhackme.com/p/Blueeech0"
+    
+    # 🕵️‍♂️ THIS IS THE FIX: Mimic a real human web browser
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "Accept": "application/json, text/plain, */*",
+        "Accept-Language": "en-US,en;q=0.9",
+        "Origin": "https://tryhackme.com",
+        "Referer": f"https://tryhackme.com{USERNAME}"
+    }
+    
     try:
-        response = requests.get(url)
-        if response.status_code != 200:
+        response = requests.get(url, headers=headers)
+        
+        if response.status_code == 429:
+            print("Error: Still hit a 429 Rate Limit. TryHackMe's firewall is blocking this GitHub IP.")
+            return []
+        elif response.status_code != 200:
             print(f"Error fetching data: {response.status_code}")
             return []
         
         data = response.json()
         raw_logs = data.get("data", [])
         
-        # DEBUG PRINT: This will print your last 3 activities in GitHub Actions logs so you can see them!
         print(f"Total raw activity logs fetched: {len(raw_logs)}")
-        for x in raw_logs[:3]:
-            print(f"Sample Log Found: {x.get('text')}")
 
         rooms = []
         for activity in raw_logs:
             text = activity.get("text", "")
-            # Broader keyword checking to handle alternative formatting
             if "complete" in text.lower() or "finish" in text.lower():
-                # Extract markdown links [Room Name](url) or clean up plain text
                 match = re.search(r"\[(.*?)\]", text)
                 room_name = match.group(1) if match else text.replace("Completed the room", "").replace("room", "").strip()
                 
