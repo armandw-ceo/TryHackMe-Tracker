@@ -1,12 +1,10 @@
 import re
 import requests
 
-# 🚨 CHANGE THIS: Replace with your actual TryHackMe username
-USERNAME = "Blueeech0"  
-LIMIT = 10  # Number of recent completed rooms to show
+USERNAME = "Blueeech0"  # Ensure this matches your exact case-sensitive username
+LIMIT = 10  
 
 def get_completed_rooms():
-    # Public endpoint for user recent activities
     url = f"https://tryhackme.com/p/Blueeech0"
     try:
         response = requests.get(url)
@@ -15,16 +13,23 @@ def get_completed_rooms():
             return []
         
         data = response.json()
-        rooms = []
+        raw_logs = data.get("data", [])
         
-        # Parse activity logs for completed rooms
-        for activity in data.get("data", []):
+        # DEBUG PRINT: This will print your last 3 activities in GitHub Actions logs so you can see them!
+        print(f"Total raw activity logs fetched: {len(raw_logs)}")
+        for x in raw_logs[:3]:
+            print(f"Sample Log Found: {x.get('text')}")
+
+        rooms = []
+        for activity in raw_logs:
             text = activity.get("text", "")
-            if "completed the room" in text.lower():
-                # Extract room name inside markdown brackets [Room Name]
+            # Broader keyword checking to handle alternative formatting
+            if "complete" in text.lower() or "finish" in text.lower():
+                # Extract markdown links [Room Name](url) or clean up plain text
                 match = re.search(r"\[(.*?)\]", text)
-                room_name = match.group(1) if match else text.split("room")[-1].strip()
-                if room_name not in rooms:
+                room_name = match.group(1) if match else text.replace("Completed the room", "").replace("room", "").strip()
+                
+                if room_name and room_name not in rooms:
                     rooms.append(room_name)
                     
         return rooms[:LIMIT]
@@ -37,7 +42,6 @@ def update_readme(rooms):
         with open("README.md", "r") as f:
             content = f.read()
     except FileNotFoundError:
-        print("README.md file not found. Creating a blank one.")
         content = "<!-- THM-ROOMS:START -->\n<!-- THM-ROOMS:END -->"
 
     start_marker = "<!-- THM-ROOMS:START -->"
