@@ -14,8 +14,10 @@ def get_completed_rooms_from_notion():
     token = NOTION_TOKEN.strip()
     db_id = DATABASE_ID.strip()
 
-    # 🌐 FIXED URL BUILDER: Clears out duplicate slashes safely
-    url = f"https://notion.com{db_id}/query"
+    protocol = "https"
+    domain = "://notion.com"
+    path = f"/v1/databases/{db_id}/query"
+    url = f"{protocol}://{domain}{path}"
     
     headers = {
         "Authorization": f"Bearer {token}",
@@ -63,13 +65,13 @@ def get_completed_rooms_from_notion():
             category_name = select_data.get("name", "General")
             
             if "Red Team" in category_name:
-                cat_display = "🔴 Red Team"
+                cat_emoji = "🔴"
             elif "Blue Team" in category_name:
-                cat_display = "🔵 Blue Team"
+                cat_emoji = "🔵"
             elif "Purple Team" in category_name:
-                cat_display = "🟣 Purple Team"
+                cat_emoji = "🟣"
             else:
-                cat_display = f"🚀 {category_name}"
+                cat_emoji = "🚀"
 
             # 3. Extract Difficulty
             difficulty_select = properties.get("Difficulty", {}) or {}
@@ -77,34 +79,39 @@ def get_completed_rooms_from_notion():
             difficulty_name = diff_data.get("name", "").lower().strip()
             
             if "info" in difficulty_name:
-                diff_display = "⚪ Info"
+                diff_emoji = "⚪ Info"
             elif "easy" in difficulty_name:
-                diff_display = "🟢 Easy"
+                diff_emoji = "🟢 Easy"
             elif "medium" in difficulty_name:
-                diff_display = "🟡 Medium"
+                diff_emoji = "🟡 Medium"
             elif "hard" in difficulty_name:
-                diff_display = "🟠 Hard"
+                diff_emoji = "🟠 Hard"
             elif "insane" in difficulty_name:
-                diff_display = "🔴 Insane"
+                diff_emoji = "🔴 Insane"
             else:
-                diff_display = f"⚙️ {difficulty_name.capitalize()}"
+                diff_emoji = "⚙️ Lab"
 
-            # 4. Extract URL
+            # 4. Extract URL (Strict case check matching your 'Url' naming choice)
             url_property = properties.get("Url", {}) or {}
             room_url = url_property.get("url", "")
 
             # 5. Extract Completed Date
             date_property = properties.get("Completed", {}) or {}
             date_data = date_property.get("date", {}) or {}
-            completed_date = date_data.get("start", "—")
+            completed_date = date_data.get("start", "") # Outputs format YYYY-MM-DD
             
-            if room_url:
-                room_column = f"[**{room_name}**]({room_url})"
-            else:
-                room_column = f"**{room_name}**"
+            # Format date visual string if it exists
+            date_str = f" 🗓️ *{completed_date}*" if completed_date else ""
+            
+            # Build metadata block structure
+            metadata = f"— *{category_name}* \| `{diff_emoji}`{date_str}"
             
             if len(rooms) < LIMIT:
-                rooms.append(f"| {room_column} | {cat_display} | `{diff_display}` | 🗓️ {completed_date} |")
+                # If a URL exists in Notion, make the name a clickable hyperlink
+                if room_url:
+                    rooms.append(f"* {cat_emoji} [**{room_name}**]({room_url}) {metadata}")
+                else:
+                    rooms.append(f"* {cat_emoji} **{room_name}** {metadata}")
 
         return rooms, total_completed
 
@@ -132,14 +139,10 @@ def update_readme(rooms, total_completed):
         "| :--- | :--- |",
         f"| 🏆 Rooms Completed | **{total_completed}** |",
         "",
-        "### 🕒 Recent Lab Activity",
+        "### 🕒 Recent Lab Activity"
     ]
 
     if rooms:
-        output_lines.extend([
-            "| Room Name | Category | Difficulty | Date Completed |",
-            "| :--- | :--- | :--- | :--- |"
-        ])
         output_lines.extend(rooms)
     else:
         output_lines.append("* No recent completed labs found in Notion tracker.")
