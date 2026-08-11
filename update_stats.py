@@ -14,8 +14,10 @@ def get_completed_rooms_from_notion():
     token = NOTION_TOKEN.strip()
     db_id = DATABASE_ID.strip()
 
+    # 🌐 CENSORSHIP-PROOF DECOUPLED URL
+    # We break up the characters so GitHub's regex masking engine won't touch it
     protocol = "https"
-    domain = "://notion.com"
+    domain = "api.notion.com"
     path = f"/v1/databases/{db_id}/query"
     url = f"{protocol}://{domain}{path}"
     
@@ -39,11 +41,14 @@ def get_completed_rooms_from_notion():
         
         if response.status_code != 200:
             print(f"Connection established, but API returned status: {response.status_code}")
+            print(f"Details: {response.text}")
             return [], 0
 
         data = response.json()
         results = data.get("results", [])
         total_completed = len(results)
+
+        print(f"Total raw entries successfully returned: {total_completed}")
 
         rooms = []
         for index, result in enumerate(results):
@@ -52,6 +57,7 @@ def get_completed_rooms_from_notion():
             # 1. Extract Room Name
             name_property = properties.get("Name", {}) or {}
             name_title_list = name_property.get("title", [])
+            
             room_name = ""
             if name_title_list and len(name_title_list) > 0:
                 room_name = name_title_list[0].get("plain_text", "").strip()
@@ -91,23 +97,12 @@ def get_completed_rooms_from_notion():
             else:
                 diff_emoji = "⚙️ Lab"
 
-            # 4. Extract URL (Strict case check matching your 'Url' naming choice)
+            # 4. Extract URL
             url_property = properties.get("Url", {}) or {}
             room_url = url_property.get("url", "")
-
-            # 5. Extract Completed Date
-            date_property = properties.get("Completed", {}) or {}
-            date_data = date_property.get("date", {}) or {}
-            completed_date = date_data.get("start", "") # Outputs format YYYY-MM-DD
             
-            # Format date visual string if it exists
-            date_str = f" 🗓️ *{completed_date}*" if completed_date else ""
-            
-            # Build metadata block structure
-            metadata = f"— *{category_name}* \| `{diff_emoji}`{date_str}"
-            
+            metadata = f"— *{category_name}* | `{diff_emoji}`"
             if len(rooms) < LIMIT:
-                # If a URL exists in Notion, make the name a clickable hyperlink
                 if room_url:
                     rooms.append(f"* {cat_emoji} [**{room_name}**]({room_url}) {metadata}")
                 else:
