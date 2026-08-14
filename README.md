@@ -6,11 +6,12 @@
 ### ⚡ Quick Stats
 | Metric | Value |
 | :--- | :--- |
-| 🏆 Rooms Completed | **9** |
+| 🏆 Rooms Completed | **10** |
 
 ### 🕒 Recent Lab Activity
 | Room Name | Category | Difficulty | Date Completed |
 | :--- | :--- | :--- | :--- |
+| [**Exchange Online Monitoring**](https://tryhackme.com/room/exchangeonlinemonitoring) | 🔵 Blue Team | `🟡 Medium` | 🗓️ 2026-08-13 |
 | [**Defensive Security Trends**](https://tryhackme.com/room/defensivesecuritytrends) | 🔵 Blue Team | `🟢 Easy` | 🗓️ 2026-08-13 |
 | [**Report Writing for SOC L2**](https://tryhackme.com/room/reportwritingsocl2) | 🔵 Blue Team | `🟢 Easy` | 🗓️ 2026-08-13 |
 | [**SOC L2 Alert Triage**](https://tryhackme.com/room/socl2alerttriage) | 🔵 Blue Team | `🟢 Easy` | 🗓️ 2026-08-13 |
