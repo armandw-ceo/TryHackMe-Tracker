@@ -6,11 +6,13 @@
 ### ⚡ Quick Stats
 | Metric | Value |
 | :--- | :--- |
-| 🏆 Rooms Completed | **17** |
+| 🏆 Rooms Completed | **19** |
 
 ### 🕒 Recent Lab Activity
 | Room Name | Category | Difficulty | Date Completed |
 | :--- | :--- | :--- | :--- |
+| [**Detecting AD Lateral Movement**](https://tryhackme.com/room/detectingadlateralmovement) | 🔵 Blue Team | `🟡 Medium` | 🗓️ 2026-08-17 |
+| [**Detecting AD Credential Attacks**](https://tryhackme.com/room/detectingadcredentialattacks) | 🔵 Blue Team | `🟡 Medium` | 🗓️ 2026-08-16 |
 | [**Detecting AD Initial Access**](https://tryhackme.com/room/detectingadinitialaccess) | 🔵 Blue Team | `🟡 Medium` | 🗓️ 2026-08-16 |
 | [**Monitoring Active Directory**](https://tryhackme.com/room/monitoringactivedirectory) | 🔵 Blue Team | `🟡 Medium` | 🗓️ 2026-08-16 |
 | [**Fixit**](https://tryhackme.com/room/fixit) | 🔵 Blue Team | `🟡 Medium` | 🗓️ 2026-08-15 |
@@ -19,6 +21,4 @@
 | [**Microsoft Intune Monitoring**](https://tryhackme.com/room/msintunemonitoring) | 🔵 Blue Team | `🟡 Medium` | 🗓️ 2026-08-14 |
 | [**SharePoint Online Monitoring**](https://tryhackme.com/room/sharepointonlinemonitoring) | 🔵 Blue Team | `🟡 Medium` | 🗓️ 2026-08-14 |
 | [**Exchange Online Monitoring**](https://tryhackme.com/room/exchangeonlinemonitoring) | 🔵 Blue Team | `🟡 Medium` | 🗓️ 2026-08-13 |
-| [**Defensive Security Trends**](https://tryhackme.com/room/defensivesecuritytrends) | 🔵 Blue Team | `🟢 Easy` | 🗓️ 2026-08-13 |
-| [**Report Writing for SOC L2**](https://tryhackme.com/room/reportwritingsocl2) | 🔵 Blue Team | `🟢 Easy` | 🗓️ 2026-08-13 |
 <!-- THM-ROOMS:END -->
