@@ -6,11 +6,13 @@
 ### ⚡ Quick Stats
 | Metric | Value |
 | :--- | :--- |
-| 🏆 Rooms Completed | **15** |
+| 🏆 Rooms Completed | **17** |
 
 ### 🕒 Recent Lab Activity
 | Room Name | Category | Difficulty | Date Completed |
 | :--- | :--- | :--- | :--- |
+| [**Detecting AD Initial Access**](https://tryhackme.com/room/detectingadinitialaccess) | 🔵 Blue Team | `🟡 Medium` | 🗓️ 2026-08-16 |
+| [**Monitoring Active Directory**](https://tryhackme.com/room/monitoringactivedirectory) | 🔵 Blue Team | `🟡 Medium` | 🗓️ 2026-08-16 |
 | [**Fixit**](https://tryhackme.com/room/fixit) | 🔵 Blue Team | `🟡 Medium` | 🗓️ 2026-08-15 |
 | [**CTI for Alert Triage**](https://tryhackme.com/room/ctiforalerttriage) | 🔵 Blue Team | `🟢 Easy` | 🗓️ 2026-08-15 |
 | [**APIWizards Breach**](https://tryhackme.com/room/apiwizardsbreach) | 🔵 Blue Team | `🟡 Medium` | 🗓️ 2026-08-15 |
@@ -19,6 +21,4 @@
 | [**Exchange Online Monitoring**](https://tryhackme.com/room/exchangeonlinemonitoring) | 🔵 Blue Team | `🟡 Medium` | 🗓️ 2026-08-13 |
 | [**Defensive Security Trends**](https://tryhackme.com/room/defensivesecuritytrends) | 🔵 Blue Team | `🟢 Easy` | 🗓️ 2026-08-13 |
 | [**Report Writing for SOC L2**](https://tryhackme.com/room/reportwritingsocl2) | 🔵 Blue Team | `🟢 Easy` | 🗓️ 2026-08-13 |
-| [**SOC L2 Alert Triage**](https://tryhackme.com/room/socl2alerttriage) | 🔵 Blue Team | `🟢 Easy` | 🗓️ 2026-08-13 |
-| [**Senior Security Analyst Intro**](https://tryhackme.com/room/seniorsecanalystintro) | 🔵 Blue Team | `🟢 Easy` | 🗓️ 2026-08-13 |
 <!-- THM-ROOMS:END -->
