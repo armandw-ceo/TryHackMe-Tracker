@@ -6,11 +6,13 @@
 ### ⚡ Quick Stats
 | Metric | Value |
 | :--- | :--- |
-| 🏆 Rooms Completed | **21** |
+| 🏆 Rooms Completed | **23** |
 
 ### 🕒 Recent Lab Activity
 | Room Name | Category | Difficulty | Date Completed |
 | :--- | :--- | :--- | :--- |
+| [**The Silent Transfer**](https://tryhackme.com/room/operationsilenttransfer) | 🔵 Blue Team | `🟢 Easy` | 🗓️ 2026-08-21 |
+| [**Vulnversity**](https://tryhackme.com/room/vulnversity) | 🔴 Red Team | `🟢 Easy` | 🗓️ 2026-08-21 |
 | [**Threat Hunting: Introduction**](https://tryhackme.com/room/threathuntingintroduction) | 🔵 Blue Team | `🟢 Easy` | 🗓️ 2026-08-20 |
 | [**Detecting AD Post-Exploitation**](https://tryhackme.com/room/detectingadpostexploitation) | 🔵 Blue Team | `🟡 Medium` | 🗓️ 2026-08-17 |
 | [**Detecting AD Lateral Movement**](https://tryhackme.com/room/detectingadlateralmovement) | 🔵 Blue Team | `🟡 Medium` | 🗓️ 2026-08-17 |
@@ -19,6 +21,4 @@
 | [**Monitoring Active Directory**](https://tryhackme.com/room/monitoringactivedirectory) | 🔵 Blue Team | `🟡 Medium` | 🗓️ 2026-08-16 |
 | [**Fixit**](https://tryhackme.com/room/fixit) | 🔵 Blue Team | `🟡 Medium` | 🗓️ 2026-08-15 |
 | [**CTI for Alert Triage**](https://tryhackme.com/room/ctiforalerttriage) | 🔵 Blue Team | `🟢 Easy` | 🗓️ 2026-08-15 |
-| [**APIWizards Breach**](https://tryhackme.com/room/apiwizardsbreach) | 🔵 Blue Team | `🟡 Medium` | 🗓️ 2026-08-15 |
-| [**Microsoft Intune Monitoring**](https://tryhackme.com/room/msintunemonitoring) | 🔵 Blue Team | `🟡 Medium` | 🗓️ 2026-08-14 |
 <!-- THM-ROOMS:END -->
