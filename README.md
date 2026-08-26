@@ -6,11 +6,13 @@
 ### ⚡ Quick Stats
 | Metric | Value |
 | :--- | :--- |
-| 🏆 Rooms Completed | **34** |
+| 🏆 Rooms Completed | **36** |
 
 ### 🕒 Recent Lab Activity
 | Room Name | Category | Difficulty | Date Completed |
 | :--- | :--- | :--- | :--- |
+| [**Monitoring AWS Workloads**](https://tryhackme.com/room/monitoringawsworkloads) | 🔵 Blue Team | `🟡 Medium` | 🗓️ 2026-08-26 |
+| [**Monitoring AWS Services**](https://tryhackme.com/room/monitoringawsservices) | 🔵 Blue Team | `🟡 Medium` | 🗓️ 2026-08-26 |
 | [**Monitoring AWS Logins**](https://tryhackme.com/room/monitoringawslogins) | 🔵 Blue Team | `🟡 Medium` | 🗓️ 2026-08-24 |
 | [**AWS Security Logging**](https://tryhackme.com/room/awssecurityloggi) | 🔵 Blue Team | `🟡 Medium` | 🗓️ 2026-08-23 |
 | [**Cloud Security Pitfalls**](https://tryhackme.com/room/cloudsecuritypitfalls) | 🔵 Blue Team | `🟢 Easy` | 🗓️ 2026-08-23 |
@@ -19,6 +21,4 @@
 | [**Elastic: Using Elastic Defend**](https://tryhackme.com/room/elasticdefend) | 🔵 Blue Team | `🟡 Medium` | 🗓️ 2026-08-23 |
 | [**Elastic: Setting up a SOC Lab**](https://tryhackme.com/room/elasticlab) | 🔵 Blue Team | `🟡 Medium` | 🗓️ 2026-08-23 |
 | [**Post-Incident Activity**](https://tryhackme.com/room/postincidentactivity) | 🔵 Blue Team | `🟡 Medium` | 🗓️ 2026-08-22 |
-| [**Response and Recovery**](https://tryhackme.com/room/responseandrecovery) | 🔵 Blue Team | `🟡 Medium` | 🗓️ 2026-08-22 |
-| [**Detection and Analysis**](https://tryhackme.com/room/detectionandanalysis) | 🔵 Blue Team | `🟡 Medium` | 🗓️ 2026-08-22 |
 <!-- THM-ROOMS:END -->
