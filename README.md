@@ -6,11 +6,12 @@
 ### ⚡ Quick Stats
 | Metric | Value |
 | :--- | :--- |
-| 🏆 Rooms Completed | **49** |
+| 🏆 Rooms Completed | **50** |
 
 ### 🕒 Recent Lab Activity
 | Room Name | Category | Difficulty | Date Completed |
 | :--- | :--- | :--- | :--- |
+| [**Red Team OPSEC**](https://tryhackme.com/room/opsec) | 🔴 Red Team | `🟡 Medium` | 🗓️ 2026-09-09 |
 | [**Red Team Threat Intel**](https://tryhackme.com/room/redteamthreatintel) | 🔴 Red Team | `🟡 Medium` | 🗓️ 2026-09-08 |
 | [**Red Team Engagements**](https://tryhackme.com/room/redteamengagements) | 🔴 Red Team | `🟢 Easy` | 🗓️ 2026-09-06 |
 | [**Red Team  Fundamentals**](https://tryhackme.com/room/redteamfundamentals/) | 🔴 Red Team | `🟢 Easy` | 🗓️ 2026-09-06 |
@@ -20,5 +21,4 @@
 | [**Traffic Analysis Pitfalls**](https://tryhackme.com/room/trafficanalysispitfalls/) | 🔵 Blue Team | `🟡 Medium` | 🗓️ 2026-09-01 |
 | [**Net Sec Challenge**](https://tryhackme.com/room/netsecchallenge) | 🔴 Red Team | `🟢 Easy` | 🗓️ 2026-08-31 |
 | [**Hacking with PowerShell**](https://tryhackme.com/room/powershell) | 🔴 Red Team | `🟢 Easy` | 🗓️ 2026-08-28 |
-| [**Linux Shells**](https://tryhackme.com/room/linuxshells/) | 🔵 Blue Team | `🟢 Easy` | 🗓️ 2026-08-28 |
 <!-- THM-ROOMS:END -->
