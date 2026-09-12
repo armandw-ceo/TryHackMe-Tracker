@@ -6,11 +6,12 @@
 ### ⚡ Quick Stats
 | Metric | Value |
 | :--- | :--- |
-| 🏆 Rooms Completed | **51** |
+| 🏆 Rooms Completed | **52** |
 
 ### 🕒 Recent Lab Activity
 | Room Name | Category | Difficulty | Date Completed |
 | :--- | :--- | :--- | :--- |
+| [**Dig Dug**](https://tryhackme.com/room/digdug) | 🔴 Red Team | `🟢 Easy` | 🗓️ 2026-09-11 |
 | [**TakeOver**](https://tryhackme.com/room/takeover/) | 🔴 Red Team | `🟢 Easy` | 🗓️ 2026-09-10 |
 | [**Red Team OPSEC**](https://tryhackme.com/room/opsec) | 🔴 Red Team | `🟡 Medium` | 🗓️ 2026-09-09 |
 | [**Red Team Threat Intel**](https://tryhackme.com/room/redteamthreatintel) | 🔴 Red Team | `🟡 Medium` | 🗓️ 2026-09-08 |
@@ -20,5 +21,4 @@
 | [**Networking Core Protocols**](https://tryhackme.com/room/networkingcoreprotocols/) | 🔵 Blue Team | `🟢 Easy` | 🗓️ 2026-09-02 |
 | [**Phishing - Phishmas Greetings**](https://tryhackme.com/room/spottingphishing-aoc2025-r2g4f6s8l0) | 🔵 Blue Team | `🟡 Medium` | 🗓️ 2026-09-02 |
 | [**Traffic Analysis Pitfalls**](https://tryhackme.com/room/trafficanalysispitfalls/) | 🔵 Blue Team | `🟡 Medium` | 🗓️ 2026-09-01 |
-| [**Net Sec Challenge**](https://tryhackme.com/room/netsecchallenge) | 🔴 Red Team | `🟢 Easy` | 🗓️ 2026-08-31 |
 <!-- THM-ROOMS:END -->
