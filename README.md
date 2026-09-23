@@ -6,11 +6,12 @@
 ### ⚡ Quick Stats
 | Metric | Value |
 | :--- | :--- |
-| 🏆 Rooms Completed | **58** |
+| 🏆 Rooms Completed | **59** |
 
 ### 🕒 Recent Lab Activity
 | Room Name | Category | Difficulty | Date Completed |
 | :--- | :--- | :--- | :--- |
+| [**Network Services**](https://tryhackme.com/room/networkservices/) | 🔴 Red Team | `🟢 Easy` | 🗓️ 2026-09-22 |
 | [**Phishing Books**](https://tryhackme.com/room/phishingbooks/) | 🔵 Blue Team | `🟢 Easy` | 🗓️ 2026-09-21 |
 | [**Portal Drop**](https://tryhackme.com/room/portaldrop/) | 🔵 Blue Team | `🟢 Easy` | 🗓️ 2026-09-20 |
 | [**Just a VPN Login**](https://tryhackme.com/room/justavpnlogin/) | 🔵 Blue Team | `🟢 Easy` | 🗓️ 2026-09-20 |
@@ -20,5 +21,4 @@
 | [**Dig Dug**](https://tryhackme.com/room/digdug) | 🔴 Red Team | `🟢 Easy` | 🗓️ 2026-09-11 |
 | [**TakeOver**](https://tryhackme.com/room/takeover/) | 🔴 Red Team | `🟢 Easy` | 🗓️ 2026-09-10 |
 | [**Red Team OPSEC**](https://tryhackme.com/room/opsec) | 🔴 Red Team | `🟡 Medium` | 🗓️ 2026-09-09 |
-| [**Red Team Threat Intel**](https://tryhackme.com/room/redteamthreatintel) | 🔴 Red Team | `🟡 Medium` | 🗓️ 2026-09-08 |
 <!-- THM-ROOMS:END -->
