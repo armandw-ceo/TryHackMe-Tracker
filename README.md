@@ -6,11 +6,12 @@
 ### ⚡ Quick Stats
 | Metric | Value |
 | :--- | :--- |
-| 🏆 Rooms Completed | **61** |
+| 🏆 Rooms Completed | **62** |
 
 ### 🕒 Recent Lab Activity
 | Room Name | Category | Difficulty | Date Completed |
 | :--- | :--- | :--- | :--- |
+| [**RootMe**](https://tryhackme.com/room/rrootme) | 🔴 Red Team | `🟢 Easy` | 🗓️ 2026-09-30 |
 | [**VulnNet: Roasted**](https://tryhackme.com/room/vulnnetroasted) | 🔴 Red Team | `🟢 Easy` | 🗓️ 2026-09-27 |
 | [**Network Services 2**](https://tryhackme.com/room/networkservices2/) | 🔴 Red Team | `🟢 Easy` | 🗓️ 2026-09-25 |
 | [**Network Services**](https://tryhackme.com/room/networkservices/) | 🔴 Red Team | `🟢 Easy` | 🗓️ 2026-09-22 |
@@ -20,5 +21,4 @@
 | [**OhSINT**](https://tryhackme.com/room/ohsint/) | 🔴 Red Team | `🟢 Easy` | 🗓️ 2026-09-17 |
 | [**Attacktive Directory**](https://tryhackme.com/room/attacktivedirectory) | 🔴 Red Team | `🟡 Medium` | 🗓️ 2026-09-12 |
 | [**Intermediate Nmap**](https://tryhackme.com/room/intermediatenmap/) | 🔴 Red Team | `🟢 Easy` | 🗓️ 2026-09-12 |
-| [**Dig Dug**](https://tryhackme.com/room/digdug) | 🔴 Red Team | `🟢 Easy` | 🗓️ 2026-09-11 |
 <!-- THM-ROOMS:END -->
