@@ -6,11 +6,12 @@
 ### ⚡ Quick Stats
 | Metric | Value |
 | :--- | :--- |
-| 🏆 Rooms Completed | **63** |
+| 🏆 Rooms Completed | **64** |
 
 ### 🕒 Recent Lab Activity
 | Room Name | Category | Difficulty | Date Completed |
 | :--- | :--- | :--- | :--- |
+| [**Introduction to Windows IR**](https://tryhackme.com/room/introtowindowsir) | 🔵 Blue Team | `🟢 Easy` | 🗓️ 2026-11-09 |
 | [**The O365 Inrusion**](https://tryhackme.com/room/theo365intrusion) | 🔵 Blue Team | `🟡 Medium` | 🗓️ 2026-11-05 |
 | [**RootMe**](https://tryhackme.com/room/rrootme) | 🔴 Red Team | `🟢 Easy` | 🗓️ 2026-09-30 |
 | [**VulnNet: Roasted**](https://tryhackme.com/room/vulnnetroasted) | 🔴 Red Team | `🟢 Easy` | 🗓️ 2026-09-27 |
@@ -20,5 +21,4 @@
 | [**Portal Drop**](https://tryhackme.com/room/portaldrop/) | 🔵 Blue Team | `🟢 Easy` | 🗓️ 2026-09-20 |
 | [**Just a VPN Login**](https://tryhackme.com/room/justavpnlogin/) | 🔵 Blue Team | `🟢 Easy` | 🗓️ 2026-09-20 |
 | [**OhSINT**](https://tryhackme.com/room/ohsint/) | 🔴 Red Team | `🟢 Easy` | 🗓️ 2026-09-17 |
-| [**Attacktive Directory**](https://tryhackme.com/room/attacktivedirectory) | 🔴 Red Team | `🟡 Medium` | 🗓️ 2026-09-12 |
 <!-- THM-ROOMS:END -->
