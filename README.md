@@ -6,11 +6,12 @@
 ### ⚡ Quick Stats
 | Metric | Value |
 | :--- | :--- |
-| 🏆 Rooms Completed | **64** |
+| 🏆 Rooms Completed | **65** |
 
 ### 🕒 Recent Lab Activity
 | Room Name | Category | Difficulty | Date Completed |
 | :--- | :--- | :--- | :--- |
+| [**Accessing a Compromised Network**](https://tryhackme.com/room/accessingacompromisednetwork?pathCode=windows-incident-response-forensic) | 🔵 Blue Team | `🟡 Medium` | 🗓️ 2026-11-10 |
 | [**Introduction to Windows IR**](https://tryhackme.com/room/introtowindowsir) | 🔵 Blue Team | `🟢 Easy` | 🗓️ 2026-11-09 |
 | [**The O365 Inrusion**](https://tryhackme.com/room/theo365intrusion) | 🔵 Blue Team | `🟡 Medium` | 🗓️ 2026-11-05 |
 | [**RootMe**](https://tryhackme.com/room/rrootme) | 🔴 Red Team | `🟢 Easy` | 🗓️ 2026-09-30 |
@@ -20,5 +21,4 @@
 | [**Phishing Books**](https://tryhackme.com/room/phishingbooks/) | 🔵 Blue Team | `🟢 Easy` | 🗓️ 2026-09-21 |
 | [**Portal Drop**](https://tryhackme.com/room/portaldrop/) | 🔵 Blue Team | `🟢 Easy` | 🗓️ 2026-09-20 |
 | [**Just a VPN Login**](https://tryhackme.com/room/justavpnlogin/) | 🔵 Blue Team | `🟢 Easy` | 🗓️ 2026-09-20 |
-| [**OhSINT**](https://tryhackme.com/room/ohsint/) | 🔴 Red Team | `🟢 Easy` | 🗓️ 2026-09-17 |
 <!-- THM-ROOMS:END -->
